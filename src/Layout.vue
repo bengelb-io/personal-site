@@ -9,14 +9,20 @@ const capitalize = (s: string) => {
 const rootLinks = router.getRoutes().filter(r => r.path.split("/").length === 2)
 </script>
 <template>
-    <header>
-        <nav>
-            <RouterLink v-for="link in rootLinks" :to="link.path">
-                {{ link.path === "/" ? "Home" : capitalize(link.path.slice(1)) }}
-            </RouterLink>
+    <header class="p-6">
+        <nav class="flex justify-between">
+            <a href="mailto:benjamin.gelb.io@gmail.com" class="hover:cursor-pointer hover:underline">
+                Email Me
+            </a>
+            <div>
+                <RouterLink v-for="link in rootLinks" :to="link.path" class="mx-2 hover:cursor-pointer hover:underline">
+                    {{ link.path === "/" ? "Portfolio" : capitalize(link.path.slice(1)) }}
+                </RouterLink>
+            </div>
+
         </nav>
     </header>
-    <main>
+    <main class="flex flex-col md:p-24 px-12 transition-all">
         <slot />
     </main>
 </template>
